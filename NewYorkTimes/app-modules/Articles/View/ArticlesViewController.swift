@@ -82,11 +82,23 @@ extension ArticlesViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = UITableViewCell()
         var content = cell.defaultContentConfiguration()
         content.text = presenter?.titleLabelText(indexPath: indexPath)
-        content.secondaryText = presenter?.subsectionLabelText(indexPath: indexPath)
+        content.secondaryText = presenter?.sectionLabelText(indexPath: indexPath)
 
         // Text properties
         content.textProperties.font = .boldSystemFont(ofSize: 18)
         content.textProperties.numberOfLines = 2
+        
+        // Image
+        let imageUrl = presenter?.articleImage(indexPath: indexPath)
+        content.imageProperties.reservedLayoutSize = CGSize(width: 50, height: 50)
+        
+        ImageHandler.shared.loadImageFrom(urlString: imageUrl ?? "", success: { image in
+            content.image = image
+            cell.contentConfiguration = content
+        }, failure: { errorImage in
+            content.image = errorImage
+            cell.contentConfiguration = content
+        })
         
         cell.contentConfiguration = content
         return cell

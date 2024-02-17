@@ -38,7 +38,8 @@ protocol ViewToPresenterArticlesProtocol: AnyObject {
     
     func numberOfRowsInSection() -> Int
     func titleLabelText(indexPath: IndexPath) -> String?
-    func subsectionLabelText(indexPath: IndexPath) -> String?
+    func sectionLabelText(indexPath: IndexPath) -> String?
+    func articleImage(indexPath: IndexPath) -> String?
     
     func didSelectRowAt(index: Int)
     func deselectRowAt(index: Int)

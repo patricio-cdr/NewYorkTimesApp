@@ -45,12 +45,20 @@ class ArticlePresenter: ViewToPresenterArticlesProtocol {
         return articlesArray[indexPath.row].title
     }
     
-    func subsectionLabelText(indexPath: IndexPath) -> String? {
+    func sectionLabelText(indexPath: IndexPath) -> String? {
         guard let articlesArray = self.articlesArray else {
             return nil
         }
         
-        return articlesArray[indexPath.row].subsection
+        return articlesArray[indexPath.row].section
+    }
+    
+    func articleImage(indexPath: IndexPath) -> String? {
+        guard let articlesArray = self.articlesArray else {
+            return nil
+        }
+        
+        return articlesArray[indexPath.row].media.first?.mediaMetadata.first?.url
     }
 
     
