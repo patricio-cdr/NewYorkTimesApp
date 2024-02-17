@@ -7,64 +7,108 @@
 
 import Foundation
 
-struct ArticleEntity: Codable {
-    let status: String
-    let copyright: String
-    let numResults: Int
-    let results: [ArticleResult]
-    
-    private enum CodingKeys: String, CodingKey {
-        case status, copyright, numResults = "num_results", results
+import ObjectMapper
+
+struct ArticleEntity: Mappable {
+    var status: String = ""
+    var copyright: String = ""
+    var numResults: Int = 0
+    var results: [ArticleResult] = []
+
+    init?(map: Map) {}
+
+    mutating func mapping(map: Map) {
+        status <- map["status"]
+        copyright <- map["copyright"]
+        numResults <- map["num_results"]
+        results <- map["results"]
     }
 }
 
-struct ArticleResult: Codable {
-    let uri: String
-    let url: String
-    let id: Int
-    let assetId: Int
-    let source: String
-    let publishedDate: String
-    let updated: String
-    let section: String
-    let subsection: String?
-    let nytdsection: String
-    let adxKeywords: String
-    let column: String?
-    let byline: String
-    let type: String
-    let title: String
-    let abstract: String
-    let desFacet: [String]
-    let orgFacet: [String]
-    let perFacet: [String]
-    let geoFacet: [String]
-    let media: [Media]
-    let etaId: Int
-    
-    private enum CodingKeys: String, CodingKey {
-        case uri, url, id, assetId = "asset_id", source, publishedDate = "published_date", updated, section, subsection, nytdsection, adxKeywords = "adx_keywords", column, byline, type, title, abstract, desFacet = "des_facet", orgFacet = "org_facet", perFacet = "per_facet", geoFacet = "geo_facet", media, etaId = "eta_id"
+struct ArticleResult: Mappable {
+    var uri: String = ""
+    var url: String = ""
+    var id: Int = 0
+    var assetId: Int = 0
+    var source: String = ""
+    var publishedDate: String = ""
+    var updated: String = ""
+    var section: String = ""
+    var subsection: String? = ""
+    var nytdsection: String = ""
+    var adxKeywords: String = ""
+    var column: String? = ""
+    var byline: String = ""
+    var type: String = ""
+    var title: String = ""
+    var abstract: String = ""
+    var desFacet: [String] = []
+    var orgFacet: [String] = []
+    var perFacet: [String] = []
+    var geoFacet: [String] = []
+    var media: [Media] = []
+    var etaId: Int = 0
+
+    init?(map: Map) {}
+
+    mutating func mapping(map: Map) {
+        uri <- map["uri"]
+        url <- map["url"]
+        id <- map["id"]
+        assetId <- map["asset_id"]
+        source <- map["source"]
+        publishedDate <- map["published_date"]
+        updated <- map["updated"]
+        section <- map["section"]
+        subsection <- map["subsection"]
+        nytdsection <- map["nytdsection"]
+        adxKeywords <- map["adx_keywords"]
+        column <- map["column"]
+        byline <- map["byline"]
+        type <- map["type"]
+        title <- map["title"]
+        abstract <- map["abstract"]
+        desFacet <- map["des_facet"]
+        orgFacet <- map["org_facet"]
+        perFacet <- map["per_facet"]
+        geoFacet <- map["geo_facet"]
+        media <- map["media"]
+        etaId <- map["eta_id"]
     }
 }
 
-struct Media: Codable {
-    let type: String
-    let subtype: String?
-    let caption: String?
-    let copyright: String
-    let approvedForSyndication: Int
-    let mediaMetadata: [MediaMetadata]
-    
-    private enum CodingKeys: String, CodingKey {
-        case type, subtype, caption, copyright
-        case approvedForSyndication = "approved_for_syndication"
-        case mediaMetadata = "media-metadata"
+struct Media: Mappable {
+    var type: String = ""
+    var subtype: String? = ""
+    var caption: String? = ""
+    var copyright: String = ""
+    var approvedForSyndication: Int = 0
+    var mediaMetadata: [MediaMetadata] = []
+
+    init?(map: Map) {}
+
+    mutating func mapping(map: Map) {
+        type <- map["type"]
+        subtype <- map["subtype"]
+        caption <- map["caption"]
+        copyright <- map["copyright"]
+        approvedForSyndication <- map["approved_for_syndication"]
+        mediaMetadata <- map["media-metadata"]
     }
 }
 
-struct MediaMetadata: Codable {
-    let url: String
-    let format: String
-    let height: Int
-    let width: Int
+struct MediaMetadata: Mappable {
+    var url: String = ""
+    var format: String = ""
+    var height: Int = 0
+    var width: Int = 0
+
+    init?(map: Map) {}
+
+    mutating func mapping(map: Map) {
+        url <- map["url"]
+        format <- map["format"]
+        height <- map["height"]
+        width <- map["width"]
+    }
 }

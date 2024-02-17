@@ -20,7 +20,12 @@ protocol ViewToPresenterArticlesProtocol: AnyObject {
 
 // MARK: Interactor Input (Presenter -> Interactor)
 protocol PresenterToInteractorArticlesProtocol: AnyObject {
-    
+//    associatedtype PresenterType: InteractorToPresenterArticlesProtocol
+//    
+//    var presenter: PresenterType? { get set }
+//        
+//    func loadArticles()
+//    func retrieveArticle(at index: Int)
 }
 
 // MARK: Interactor Output (Interactor -> Presenter)
