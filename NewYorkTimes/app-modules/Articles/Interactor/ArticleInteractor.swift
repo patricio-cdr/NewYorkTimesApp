@@ -17,7 +17,7 @@ class ArticleInteractor: PresenterToInteractorArticlesProtocol {
         print("Interactor receives the request from Presenter to load quotes from the server.")
         ArticleService.shared.getArticles { (code, articles) in
             self.articles = articles
-            self.presenter?.fetchArticlesSuccess(quotes: articles)
+            self.presenter?.fetchArticlesSuccess(articles: articles)
         } failure: { (code) in
             self.presenter?.fetchArticlesFailure(errorCode: code)
         }

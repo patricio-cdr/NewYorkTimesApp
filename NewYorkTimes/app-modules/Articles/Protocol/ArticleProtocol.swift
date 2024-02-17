@@ -6,16 +6,40 @@
 //
 
 import Foundation
+import UIKit
+
 
 
 // MARK: View Output (Presenter -> View)
 protocol PresenterToViewArticlesProtocol: AnyObject {
+    func onFetchArticlesSuccess()
+    func onFetchArticlesFailure(error: String)
+    
+    func showHUD()
+    func hideHUD()
+    
+    func deselectRowAt(row: Int)
     
 }
 
 // MARK: View Input (View -> Presenter)
 protocol ViewToPresenterArticlesProtocol: AnyObject {
+   
+    var view: PresenterToViewArticlesProtocol? { get set }
+    var interactor: PresenterToInteractorArticlesProtocol? { get set }
+    var router: PresenterToRouterArticlesProtocol? { get set }
     
+    var articlesStrings: [String]? { get set }
+    
+    func viewDidLoad()
+    
+    func refresh()
+    
+    func numberOfRowsInSection() -> Int
+    func textLabelText(indexPath: IndexPath) -> String?
+    
+    func didSelectRowAt(index: Int)
+    func deselectRowAt(index: Int)
 }
 
 // MARK: Interactor Input (Presenter -> Interactor)
@@ -29,7 +53,8 @@ protocol PresenterToInteractorArticlesProtocol: AnyObject {
 
 // MARK: Interactor Output (Interactor -> Presenter)
 protocol InteractorToPresenterArticlesProtocol: AnyObject {
-    func fetchArticlesSuccess(quotes: [ArticleEntity])
+    
+    func fetchArticlesSuccess(articles: [ArticleEntity])
     func fetchArticlesFailure(errorCode: Int)
     
     func getArticleSuccess(_ article: ArticleEntity)
@@ -38,6 +63,8 @@ protocol InteractorToPresenterArticlesProtocol: AnyObject {
 
 // MARK: Router Input (Presenter -> Router)
 protocol PresenterToRouterArticlesProtocol: AnyObject {
-
+    static func createModule() -> UINavigationController
+    
+    func pushToArticleDetail(on view: PresenterToViewArticlesProtocol, with article: ArticleEntity)
 }
 

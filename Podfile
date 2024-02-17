@@ -9,6 +9,7 @@ target 'NewYorkTimes' do
   pod 'Alamofire', '4.9'
   pod 'AlamofireObjectMapper'
   pod 'ObjectMapper'
+  pod 'PKHUD'
 
 
   target 'NewYorkTimesTests' do
