@@ -11,8 +11,8 @@ import UIKit
 // MARK: View Output (Presenter -> View)
 protocol PresenterToViewArticleDetailProtocol: AnyObject {
     
-    func onGetImageFromURLSuccess(title: String, byline: String, image: UIImage, publishedDate: String, abstract: String)
-    func onGetImageFromURLFailure(title: String, byline: String)
+    func onGetImageFromURLSuccess(article: ArticleResult, image: UIImage)
+    func onGetImageFromURLFailure(article: ArticleResult)
 }
 
 

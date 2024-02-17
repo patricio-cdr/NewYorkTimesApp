@@ -27,12 +27,12 @@ extension ArticleDetailPresenter: InteractorToPresenterArticleDetailProtocol {
     func getImageFromURLSuccess(article: ArticleResult, image: UIImage?) {
         print("Presenter receives the result from Interactor after it's done its job.")
 
-        view?.onGetImageFromURLSuccess(title: article.title, byline: article.byline, image: image!, publishedDate: article.publishedDate, abstract: article.abstract)
+        view?.onGetImageFromURLSuccess(article: article, image: image!)
     }
     
     func getImageFromURLFailure(article: ArticleResult, image: UIImage?) {
         print("Presenter receives the result from Interactor after it's done its job.")
-        view?.onGetImageFromURLFailure(title: article.title, byline: article.byline)
+        view?.onGetImageFromURLFailure(article: article)
     }
     
 }
