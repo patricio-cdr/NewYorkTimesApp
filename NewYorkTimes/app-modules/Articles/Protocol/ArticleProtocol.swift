@@ -29,14 +29,16 @@ protocol ViewToPresenterArticlesProtocol: AnyObject {
     var interactor: PresenterToInteractorArticlesProtocol? { get set }
     var router: PresenterToRouterArticlesProtocol? { get set }
     
-    var articlesStrings: [String]? { get set }
+    var numberOfArticles: Int? { get set }
+    var articlesArray: [ArticleResult]? { get set }
     
     func viewDidLoad()
     
     func refresh()
     
     func numberOfRowsInSection() -> Int
-    func textLabelText(indexPath: IndexPath) -> String?
+    func titleLabelText(indexPath: IndexPath) -> String?
+    func subsectionLabelText(indexPath: IndexPath) -> String?
     
     func didSelectRowAt(index: Int)
     func deselectRowAt(index: Int)
@@ -48,13 +50,13 @@ protocol PresenterToInteractorArticlesProtocol: AnyObject {
     var presenter: InteractorToPresenterArticlesProtocol? { get set }
         
     func loadArticles()
-    func retrieveArticle(at index: Int)
+//    func retrieveArticle(at index: Int)
 }
 
 // MARK: Interactor Output (Interactor -> Presenter)
 protocol InteractorToPresenterArticlesProtocol: AnyObject {
     
-    func fetchArticlesSuccess(articles: [ArticleEntity])
+    func fetchArticlesSuccess(articles: ArticleEntity)
     func fetchArticlesFailure(errorCode: Int)
     
     func getArticleSuccess(_ article: ArticleEntity)

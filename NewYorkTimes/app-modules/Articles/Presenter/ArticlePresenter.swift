@@ -14,7 +14,8 @@ class ArticlePresenter: ViewToPresenterArticlesProtocol {
     var interactor: PresenterToInteractorArticlesProtocol?
     var router: PresenterToRouterArticlesProtocol?
     
-    var articlesStrings: [String]?
+    var numberOfArticles: Int?
+    var articlesArray: [ArticleResult]?
     
     // MARK: Inputs from view
     func viewDidLoad() {
@@ -29,25 +30,32 @@ class ArticlePresenter: ViewToPresenterArticlesProtocol {
     }
     
     func numberOfRowsInSection() -> Int {
-//        guard let articlesStrings = self.articlesStrings else {
-//            return 0
-//        }
-//
-//        return articlesStrings.count
-        return 5
+        guard let numberOfArticles = self.numberOfArticles else {
+            return 0
+        }
+
+        return numberOfArticles
     }
     
-    func textLabelText(indexPath: IndexPath) -> String? {
-        guard let articlesStrings = self.articlesStrings else {
+    func titleLabelText(indexPath: IndexPath) -> String? {
+        guard let articlesArray = self.articlesArray else {
             return nil
         }
         
-        return articlesStrings[indexPath.row]
+        return articlesArray[indexPath.row].title
+    }
+    
+    func subsectionLabelText(indexPath: IndexPath) -> String? {
+        guard let articlesArray = self.articlesArray else {
+            return nil
+        }
+        
+        return articlesArray[indexPath.row].subsection
     }
 
     
     func didSelectRowAt(index: Int) {
-        interactor?.retrieveArticle(at: index)
+//        interactor?.retrieveArticle(at: index)
     }
     
     func deselectRowAt(index: Int) {
@@ -59,9 +67,10 @@ class ArticlePresenter: ViewToPresenterArticlesProtocol {
 // MARK: - Outputs to view
 extension ArticlePresenter: InteractorToPresenterArticlesProtocol {
     
-    func fetchArticlesSuccess(articles: [ArticleEntity]) {
+    func fetchArticlesSuccess(articles: ArticleEntity) {
         print("Presenter receives the result from Interactor after it's done its job.")
-        self.articlesStrings = articles.compactMap { $0.status }
+        self.numberOfArticles = articles.numResults
+        self.articlesArray = articles.results
         view?.hideHUD()
         view?.onFetchArticlesSuccess()
     }

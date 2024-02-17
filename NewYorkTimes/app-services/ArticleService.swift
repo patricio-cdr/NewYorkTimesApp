@@ -6,20 +6,26 @@
 //
 
 import Foundation
+import ObjectMapper
 
 class ArticleService {
     static let shared = { ArticleService() }()
     
-    func getArticles(success: @escaping (Int, [ArticleEntity]) -> (), failure: @escaping (Int) -> ()) {
+    func getArticles(success: @escaping (Int, ArticleEntity) -> (), failure: @escaping (Int) -> ()) {
         
         let urlString = self.configureApiCall(ArticleEndpoints.VIEWED, "/1.json", "qTl6HA9lEk9bHwEMNSrdjRAceMnSqQEZ")
         
-        APIClient.shared.getArray(urlString: urlString, success: { (code, arrayOfQuotes) in
-            success(code, arrayOfQuotes)
+        APIClient.shared.getJSONObject(urlString: urlString) { (code, articles) in
+            if let articleEntity = Mapper<ArticleEntity>().map(JSON: articles) {
+                success(code, articleEntity)
+            } else {
+                print("Mapping failed")
+            }
             
-        }) { (code) in
+        } failure: { code in
             failure(code)
         }
+
     }
     
     func configureApiCall(_ endpoint: String, _ parameter: String, _ key: String) -> String {

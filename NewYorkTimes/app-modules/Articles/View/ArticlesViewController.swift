@@ -29,7 +29,7 @@ class ArticlesViewController: UIViewController {
     
     lazy var tableView: UITableView = {
         let tableView = UITableView()
-        tableView.rowHeight = 70
+        tableView.rowHeight = 120
         tableView.dataSource = self
         tableView.delegate = self
         return tableView
@@ -80,8 +80,15 @@ extension ArticlesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-//        cell.textLabel?.text = presenter?.textLabelText(indexPath: indexPath)
-        cell.textLabel?.text = "Hello world"
+        var content = cell.defaultContentConfiguration()
+        content.text = presenter?.titleLabelText(indexPath: indexPath)
+        content.secondaryText = presenter?.subsectionLabelText(indexPath: indexPath)
+
+        // Text properties
+        content.textProperties.font = .boldSystemFont(ofSize: 18)
+        content.textProperties.numberOfLines = 2
+        
+        cell.contentConfiguration = content
         return cell
     }
     

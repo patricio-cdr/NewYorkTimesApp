@@ -59,4 +59,43 @@ class APIClient {
         
     }
     
+    func getJSONObject(urlString: String,
+                       success: @escaping (Int, [String: Any]) -> (),
+                       failure: @escaping (Int) -> ()) {
+        
+        let headers: HTTPHeaders = [
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        ]
+        
+        guard let url = NSURL(string: urlString , relativeTo: self.baseURL as URL?) else {
+            return
+        }
+        
+        let urlString = url.absoluteString!
+        
+        Alamofire
+            .request(urlString,
+                     method: .get,
+                     encoding: JSONEncoding.default,
+                     headers: headers)
+            .responseJSON { (dataResponse: DataResponse<Any>) in
+                
+                guard let serverResponse = dataResponse.response,
+                      let resultValue = dataResponse.result.value as? [String: Any] else {
+                    failure(400)
+                    return
+                }
+                
+                switch serverResponse.statusCode {
+                case 200, 201:
+                    success(serverResponse.statusCode, resultValue)
+                default:
+                    failure(serverResponse.statusCode)
+                }
+            }
+    }
+
+
+    
 }

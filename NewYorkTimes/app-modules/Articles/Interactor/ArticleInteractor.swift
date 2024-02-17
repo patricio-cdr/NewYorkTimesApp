@@ -11,10 +11,10 @@ class ArticleInteractor: PresenterToInteractorArticlesProtocol {
     
     // MARK: Properties
     weak var presenter: InteractorToPresenterArticlesProtocol?
-    var articles: [ArticleEntity]?
+    var articles: ArticleEntity?
     
     func loadArticles() {
-        print("Interactor receives the request from Presenter to load quotes from the server.")
+        print("Interactor receives the request from Presenter to load something from the server.")
         ArticleService.shared.getArticles { (code, articles) in
             self.articles = articles
             self.presenter?.fetchArticlesSuccess(articles: articles)
@@ -24,13 +24,13 @@ class ArticleInteractor: PresenterToInteractorArticlesProtocol {
 
     }
     
-    func retrieveArticle(at index: Int) {
-        guard let articles = self.articles, articles.indices.contains(index) else {
-            self.presenter?.getArticleFailure()
-            return
-        }
-        self.presenter?.getArticleSuccess(self.articles![index])
-    }
+//    func retrieveArticle(at index: Int) {
+//        guard let articles = self.articles, articles.indices.contains(index) else {
+//            self.presenter?.getArticleFailure()
+//            return
+//        }
+//        self.presenter?.getArticleSuccess(self.articles![index])
+//    }
     
     
 
