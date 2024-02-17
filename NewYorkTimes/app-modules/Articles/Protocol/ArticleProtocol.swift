@@ -20,16 +20,20 @@ protocol ViewToPresenterArticlesProtocol: AnyObject {
 
 // MARK: Interactor Input (Presenter -> Interactor)
 protocol PresenterToInteractorArticlesProtocol: AnyObject {
-//    associatedtype PresenterType: InteractorToPresenterArticlesProtocol
-//    
-//    var presenter: PresenterType? { get set }
-//        
-//    func loadArticles()
-//    func retrieveArticle(at index: Int)
+    
+    var presenter: InteractorToPresenterArticlesProtocol? { get set }
+        
+    func loadArticles()
+    func retrieveArticle(at index: Int)
 }
 
 // MARK: Interactor Output (Interactor -> Presenter)
 protocol InteractorToPresenterArticlesProtocol: AnyObject {
+    func fetchArticlesSuccess(quotes: [ArticleEntity])
+    func fetchArticlesFailure(errorCode: Int)
+    
+    func getArticleSuccess(_ article: ArticleEntity)
+    func getArticleFailure()
 }
 
 // MARK: Router Input (Presenter -> Router)
