@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B8804A82B80385400415D4A /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8804A72B80385400415D4A /* ArticleModel.swift */; };
+		1B8804AB2B80391400415D4A /* ArticleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8804AA2B80391400415D4A /* ArticleProtocol.swift */; };
 		1B96AECA2B80243B0057B24E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B96AEC92B80243B0057B24E /* AppDelegate.swift */; };
 		1B96AECC2B80243B0057B24E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B96AECB2B80243B0057B24E /* SceneDelegate.swift */; };
 		1B96AECE2B80243B0057B24E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B96AECD2B80243B0057B24E /* ViewController.swift */; };
@@ -40,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B8804A72B80385400415D4A /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
+		1B8804AA2B80391400415D4A /* ArticleProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleProtocol.swift; sourceTree = "<group>"; };
 		1B96AEC62B80243B0057B24E /* NewYorkTimes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewYorkTimes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B96AEC92B80243B0057B24E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B96AECB2B80243B0057B24E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +97,79 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B88049F2B802FC300415D4A /* app-modules */ = {
+			isa = PBXGroup;
+			children = (
+				1B8804A12B80327C00415D4A /* Articles */,
+			);
+			path = "app-modules";
+			sourceTree = "<group>";
+		};
+		1B8804A02B802FD700415D4A /* app-settings */ = {
+			isa = PBXGroup;
+			children = (
+				1B96AEC92B80243B0057B24E /* AppDelegate.swift */,
+			);
+			path = "app-settings";
+			sourceTree = "<group>";
+		};
+		1B8804A12B80327C00415D4A /* Articles */ = {
+			isa = PBXGroup;
+			children = (
+				1B8804A92B8038C500415D4A /* Protocol */,
+				1B8804A62B80332600415D4A /* Router */,
+				1B8804A52B80331E00415D4A /* Entity */,
+				1B8804A42B80331400415D4A /* Presenter */,
+				1B8804A32B80330500415D4A /* Interactor */,
+				1B8804A22B8032AA00415D4A /* View */,
+			);
+			path = Articles;
+			sourceTree = "<group>";
+		};
+		1B8804A22B8032AA00415D4A /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1B8804A32B80330500415D4A /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		1B8804A42B80331400415D4A /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		1B8804A52B80331E00415D4A /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				1B8804A72B80385400415D4A /* ArticleModel.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		1B8804A62B80332600415D4A /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		1B8804A92B8038C500415D4A /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				1B8804AA2B80391400415D4A /* ArticleProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		1B96AEBD2B80243B0057B24E = {
 			isa = PBXGroup;
 			children = (
@@ -118,7 +195,8 @@
 		1B96AEC82B80243B0057B24E /* NewYorkTimes */ = {
 			isa = PBXGroup;
 			children = (
-				1B96AEC92B80243B0057B24E /* AppDelegate.swift */,
+				1B8804A02B802FD700415D4A /* app-settings */,
+				1B88049F2B802FC300415D4A /* app-modules */,
 				1B96AECB2B80243B0057B24E /* SceneDelegate.swift */,
 				1B96AECD2B80243B0057B24E /* ViewController.swift */,
 				1B96AECF2B80243B0057B24E /* Main.storyboard */,
@@ -157,7 +235,6 @@
 				409B22C2B4B585BDAA0B4A38 /* Pods-NewYorkTimesTests.debug.xcconfig */,
 				808012A41D33F331D311FE16 /* Pods-NewYorkTimesTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -375,6 +452,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B96AECE2B80243B0057B24E /* ViewController.swift in Sources */,
+				1B8804A82B80385400415D4A /* ArticleModel.swift in Sources */,
+				1B8804AB2B80391400415D4A /* ArticleProtocol.swift in Sources */,
 				1B96AECA2B80243B0057B24E /* AppDelegate.swift in Sources */,
 				1B96AED42B80243B0057B24E /* NewYorkTimes.xcdatamodeld in Sources */,
 				1B96AECC2B80243B0057B24E /* SceneDelegate.swift in Sources */,
