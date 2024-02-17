@@ -50,7 +50,7 @@ protocol PresenterToInteractorArticlesProtocol: AnyObject {
     var presenter: InteractorToPresenterArticlesProtocol? { get set }
         
     func loadArticles()
-//    func retrieveArticle(at index: Int)
+    func retrieveArticle(at index: Int)
 }
 
 // MARK: Interactor Output (Interactor -> Presenter)
@@ -59,7 +59,7 @@ protocol InteractorToPresenterArticlesProtocol: AnyObject {
     func fetchArticlesSuccess(articles: ArticleEntity)
     func fetchArticlesFailure(errorCode: Int)
     
-    func getArticleSuccess(_ article: ArticleEntity)
+    func getArticleSuccess(_ articleResult: ArticleResult)
     func getArticleFailure()
 }
 
@@ -67,6 +67,6 @@ protocol InteractorToPresenterArticlesProtocol: AnyObject {
 protocol PresenterToRouterArticlesProtocol: AnyObject {
     static func createModule() -> UINavigationController
     
-    func pushToArticleDetail(on view: PresenterToViewArticlesProtocol, with article: ArticleEntity)
+    func pushToArticleDetail(on view: PresenterToViewArticlesProtocol, with articleResult: ArticleResult)
 }
 

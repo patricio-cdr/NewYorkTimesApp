@@ -55,7 +55,7 @@ class ArticlePresenter: ViewToPresenterArticlesProtocol {
 
     
     func didSelectRowAt(index: Int) {
-//        interactor?.retrieveArticle(at: index)
+        interactor?.retrieveArticle(at: index)
     }
     
     func deselectRowAt(index: Int) {
@@ -81,13 +81,13 @@ extension ArticlePresenter: InteractorToPresenterArticlesProtocol {
         view?.onFetchArticlesFailure(error: "Couldn't fetch quotes: \(errorCode)")
     }
     
-    func getArticleSuccess(_ article: ArticleEntity) {
-        router?.pushToArticleDetail(on: view!, with: article)
+    func getArticleSuccess(_ articleResult: ArticleResult) {
+        router?.pushToArticleDetail(on: view!, with: articleResult)
     }
     
     func getArticleFailure() {
         view?.hideHUD()
-        print("Couldn't retrieve quote by index")
+        print("Couldn't retrieve article by index")
     }
 }
     

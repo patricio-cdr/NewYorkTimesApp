@@ -30,13 +30,14 @@ class ArticleRouter: PresenterToRouterArticlesProtocol {
     }
     
     // MARK: - Navigation
-    func pushToArticleDetail(on view: PresenterToViewArticlesProtocol, with article: ArticleEntity) {
+    func pushToArticleDetail(on view: PresenterToViewArticlesProtocol, with articleResult: ArticleResult) {
         print("ArticleRouter is instructed to push ArticleDetailViewController onto the navigation stack.")
-//        let quoteDetailViewController = QuoteDetailRouter.createModule(with: quote)
+        print(articleResult)
+        let articleDetailViewController = ArticleDetailRouter.createModule(with: articleResult)
             
-//        let viewController = view as! QuotesViewController
-//        viewController.navigationController?
-//            .pushViewController(quoteDetailViewController, animated: true)
+        let viewController = view as! ArticlesViewController
+        viewController.navigationController?
+            .pushViewController(articleDetailViewController, animated: true)
         
     }
     

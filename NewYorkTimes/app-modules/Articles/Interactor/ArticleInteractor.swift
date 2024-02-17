@@ -24,13 +24,13 @@ class ArticleInteractor: PresenterToInteractorArticlesProtocol {
 
     }
     
-//    func retrieveArticle(at index: Int) {
-//        guard let articles = self.articles, articles.indices.contains(index) else {
-//            self.presenter?.getArticleFailure()
-//            return
-//        }
-//        self.presenter?.getArticleSuccess(self.articles![index])
-//    }
+    func retrieveArticle(at index: Int) {
+        guard let articles = self.articles else {
+            self.presenter?.getArticleFailure()
+            return
+        }
+        self.presenter?.getArticleSuccess((self.articles?.results[index])!)
+    }
     
     
 
