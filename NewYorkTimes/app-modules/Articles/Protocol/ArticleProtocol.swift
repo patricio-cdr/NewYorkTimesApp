@@ -52,6 +52,9 @@ protocol PresenterToInteractorArticlesProtocol: AnyObject {
         
     func loadArticles()
     func retrieveArticle(at index: Int)
+    func checkForArticlesInCoreData()
+    func saveArticlesInCoreData(articles: ArticleEntity)
+    func getArticlesFromCoreData()
 }
 
 // MARK: Interactor Output (Interactor -> Presenter)

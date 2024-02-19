@@ -17,6 +17,8 @@ struct ArticleEntity: Mappable {
 
     init?(map: Map) {}
 
+    init() {}
+    
     mutating func mapping(map: Map) {
         status <- map["status"]
         copyright <- map["copyright"]
@@ -50,6 +52,8 @@ struct ArticleResult: Mappable {
     var etaId: Int = 0
 
     init?(map: Map) {}
+    
+    init() {}
 
     mutating func mapping(map: Map) {
         uri <- map["uri"]

@@ -77,8 +77,12 @@ extension ArticlePresenter: InteractorToPresenterArticlesProtocol {
     
     func fetchArticlesSuccess(articles: ArticleEntity) {
         print("Presenter receives the result from Interactor after it's done its job.")
+        
         self.numberOfArticles = articles.numResults
         self.articlesArray = articles.results
+        
+        interactor?.checkForArticlesInCoreData()
+        
         view?.hideHUD()
         view?.onFetchArticlesSuccess()
     }

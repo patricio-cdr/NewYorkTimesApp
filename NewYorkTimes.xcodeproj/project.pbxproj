@@ -13,6 +13,7 @@
 		1B07E99A2B8142B800BD0D2C /* ArticleDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B07E9992B8142B800BD0D2C /* ArticleDetailPresenter.swift */; };
 		1B07E99C2B8142FF00BD0D2C /* ArticleDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B07E99B2B8142FF00BD0D2C /* ArticleDetailInteractor.swift */; };
 		1B07E99E2B81475500BD0D2C /* ImageDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B07E99D2B81475500BD0D2C /* ImageDataService.swift */; };
+		1B07E9A02B82FEAC00BD0D2C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B07E99F2B82FEAC00BD0D2C /* NetworkService.swift */; };
 		1B37B2452B80767300B57365 /* ArticlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B37B2442B80767300B57365 /* ArticlesViewController.swift */; };
 		1B37B2472B8078A100B57365 /* ArticlePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B37B2462B8078A100B57365 /* ArticlePresenter.swift */; };
 		1B37B2492B807B2A00B57365 /* ArticleRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B37B2482B807B2A00B57365 /* ArticleRouter.swift */; };
@@ -60,6 +61,7 @@
 		1B07E9992B8142B800BD0D2C /* ArticleDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailPresenter.swift; sourceTree = "<group>"; };
 		1B07E99B2B8142FF00BD0D2C /* ArticleDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailInteractor.swift; sourceTree = "<group>"; };
 		1B07E99D2B81475500BD0D2C /* ImageDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataService.swift; sourceTree = "<group>"; };
+		1B07E99F2B82FEAC00BD0D2C /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		1B37B2442B80767300B57365 /* ArticlesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesViewController.swift; sourceTree = "<group>"; };
 		1B37B2462B8078A100B57365 /* ArticlePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlePresenter.swift; sourceTree = "<group>"; };
 		1B37B2482B807B2A00B57365 /* ArticleRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRouter.swift; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 			children = (
 				1B8804AF2B80496300415D4A /* ArticleService.swift */,
 				1B07E99D2B81475500BD0D2C /* ImageDataService.swift */,
+				1B07E99F2B82FEAC00BD0D2C /* NetworkService.swift */,
 			);
 			path = "app-services";
 			sourceTree = "<group>";
@@ -620,6 +623,7 @@
 				1B07E9982B81424D00BD0D2C /* ArticleDetailViewController.swift in Sources */,
 				1B96AECA2B80243B0057B24E /* AppDelegate.swift in Sources */,
 				1B07E99C2B8142FF00BD0D2C /* ArticleDetailInteractor.swift in Sources */,
+				1B07E9A02B82FEAC00BD0D2C /* NetworkService.swift in Sources */,
 				1B37B2492B807B2A00B57365 /* ArticleRouter.swift in Sources */,
 				1B8804B02B80496300415D4A /* ArticleService.swift in Sources */,
 				1B96AED42B80243B0057B24E /* NewYorkTimes.xcdatamodeld in Sources */,
