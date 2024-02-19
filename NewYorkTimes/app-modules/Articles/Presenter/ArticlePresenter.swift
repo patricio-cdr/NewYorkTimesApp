@@ -1,0 +1,105 @@
+//
+//  ArticlePresenter.swift
+//  NewYorkTimes
+//
+//  Created by Patricio Calderon on 17/02/24.
+//
+
+import Foundation
+
+class ArticlePresenter: ViewToPresenterArticlesProtocol {
+    
+    // MARK: Properties
+    weak var view: PresenterToViewArticlesProtocol?
+    var interactor: PresenterToInteractorArticlesProtocol?
+    var router: PresenterToRouterArticlesProtocol?
+    
+    var numberOfArticles: Int?
+    var articlesArray: [ArticleResult]?
+    
+    // MARK: Inputs from view
+    func viewDidLoad() {
+        print("Presenter is being notified that the View was loaded.")
+        view?.showHUD()
+        interactor?.loadArticles()
+    }
+    
+    func refresh() {
+        print("Presenter is being notified that the View was refreshed.")
+        interactor?.loadArticles()
+    }
+    
+    func numberOfRowsInSection() -> Int {
+        guard let numberOfArticles = self.numberOfArticles else {
+            return 0
+        }
+
+        return numberOfArticles
+    }
+    
+    func titleLabelText(indexPath: IndexPath) -> String? {
+        guard let articlesArray = self.articlesArray else {
+            return nil
+        }
+        
+        return articlesArray[indexPath.row].title
+    }
+    
+    func sectionLabelText(indexPath: IndexPath) -> String? {
+        guard let articlesArray = self.articlesArray else {
+            return nil
+        }
+        
+        return articlesArray[indexPath.row].section
+    }
+    
+    func articleImage(indexPath: IndexPath) -> String? {
+        guard let articlesArray = self.articlesArray else {
+            return nil
+        }
+        
+        return articlesArray[indexPath.row].media.first?.mediaMetadata.first?.url
+    }
+
+    
+    func didSelectRowAt(index: Int) {
+        interactor?.retrieveArticle(at: index)
+    }
+    
+    func deselectRowAt(index: Int) {
+        view?.deselectRowAt(row: index)
+    }
+    
+}
+
+// MARK: - Outputs to view
+extension ArticlePresenter: InteractorToPresenterArticlesProtocol {
+    
+    func fetchArticlesSuccess(articles: ArticleEntity) {
+        print("Presenter receives the result from Interactor after it's done its job.")
+        
+        self.numberOfArticles = articles.numResults
+        self.articlesArray = articles.results
+        
+        interactor?.checkForArticlesInCoreData()
+        
+        view?.hideHUD()
+        view?.onFetchArticlesSuccess()
+    }
+    
+    func fetchArticlesFailure(errorCode: Int) {
+        print("Presenter receives the result from Interactor after it's done its job.")
+        view?.hideHUD()
+        view?.onFetchArticlesFailure(error: "Couldn't fetch quotes: \(errorCode)")
+    }
+    
+    func getArticleSuccess(_ articleResult: ArticleResult) {
+        router?.pushToArticleDetail(on: view!, with: articleResult)
+    }
+    
+    func getArticleFailure() {
+        view?.hideHUD()
+        print("Couldn't retrieve article by index")
+    }
+}
+    
